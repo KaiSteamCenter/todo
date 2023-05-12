@@ -6,7 +6,10 @@ let newTodo = ref('')
 
 
 function todoButton() {
-  todos.value.push(newTodo.value)
+  todos.value.push({
+    text: newTodo.value,
+    complete: false
+  })
   newTodo.value=''
 }
 function deleteTodo(index) {
@@ -23,7 +26,8 @@ function deleteTodo(index) {
   <ul>
     <li v-for="(todo, index) in todos">
       <button @click="$event => deleteTodo(index)">X</button>
-    {{ todo }}
+    {{ todo.text }}
+      <input type="checkbox" v-model="todzo.complete"> 
     </li>
   </ul>
 </div>
