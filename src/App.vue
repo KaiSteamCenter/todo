@@ -1,36 +1,39 @@
 <script setup>
+import {ref} from 'vue'
+let todos = ref([])
+let newTodo = ref('')
+
+
+
+function todoButton() {
+  todos.value.push(newTodo.value)
+  newTodo.value=''
+}
+function deleteTodo(index) {
+  todos.value.splice(index, 1)
+}
+
 
 </script>
 
 <template>
-<h1>My Todo</h1> 
+<h1 id="welcome">My Todo</h1> 
+
+<div id="blackbox">
+  <ul>
+    <li v-for="(todo, index) in todos">
+      <button @click="$event => deleteTodo(index)">X</button>
+    {{ todo }}
+    </li>
+  </ul>
+</div>
+
+<input v-model="newTodo" @keydown.enter="todoButton" id="todoInput">
+<button @click="todoButton" id="todoSubmit">Add Todo</button>
+
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+<style src="/src/vuestyle.css"></style>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
