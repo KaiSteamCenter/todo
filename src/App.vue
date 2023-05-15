@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-let todos = ref([])
+import {ref, watch} from 'vue'
+let todos = ref(JSON.parse(window.localStorage.getItem('todos')))
 let newTodo = ref('')
 
 
@@ -16,7 +16,9 @@ function deleteTodo(index) {
   todos.value.splice(index, 1)
 }
 
-
+watch(todos, function(value) {
+  window.localStorage.setItem('todos', JSON.stringify(value))
+}, {deep: true})
 </script>
 
 <template>
@@ -27,13 +29,15 @@ function deleteTodo(index) {
     <li v-for="(todo, index) in todos">
       <button @click="$event => deleteTodo(index)">X</button>
     {{ todo.text }}
-      <input type="checkbox" v-model="todzo.complete"> 
+      <input type="checkbox" checked="checked" v-model="todo.complete"> 
     </li>
   </ul>
 </div>
 
 <input v-model="newTodo" @keydown.enter="todoButton" id="todoInput">
 <button @click="todoButton" id="todoSubmit">Add Todo</button>
+
+
 
 </template>
 
