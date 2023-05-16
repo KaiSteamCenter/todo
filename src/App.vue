@@ -26,10 +26,11 @@ watch(todos, function(value) {
 
 <div id="blackbox">
   <ul>
-    <li v-for="(todo, index) in todos">
-      <button @click="$event => deleteTodo(index)">X</button>
+    <li v-for="(todo, index) in todos" :class="{completed: todo.complete}" class="flex-container">
+      <input class="checkboxItem" type="checkbox" checked="checked" v-model="todo.complete"> 
     {{ todo.text }}
-      <input type="checkbox" checked="checked" v-model="todo.complete"> 
+    <button @click="$event => deleteTodo(index)" class="deleteItem">X</button>
+
     </li>
   </ul>
 </div>

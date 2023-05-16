@@ -34,35 +34,125 @@ body {
     text-align: center;
 }
 #todoSubmit {
-    margin: 5px 3px 10px 5px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    align-items: center;
-    position: relative;
-        top: 150px;
-    font-size: 17.5px;
-} 
+  margin: 5px 3px 10px 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  align-items: center;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 17.5px;
+  z-index: 2; /* Add a higher value */
+}
 
 #todoInput {
-    margin: 5px 3px 10px 5px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    position: relative;
-    font-size: 17.5px;
-        top:150px;
+  margin: 5px 3px 10px 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  position: absolute;
+  font-size: 17.5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Add a lower value */
 }
 
 #blackbox {
   background-color: black;
   color: white;
-  margin-left: auto;
-  width: 400px;
-  margin-right: 0;
-  text-align: right;
-  max-height: 300px;
+  width: 600px;
+  height: 300px; /* Changed from max-height to height */
   border-radius: 5px;
   overflow-y: scroll;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
+  position: absolute;
+  top: 25%; /* Added top property */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  word-wrap: break-word;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wordBreaker {
+  word-wrap: break-word;
+}
+
+.checkboxItem {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkboxItem::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.checkboxItem:checked::before {
+  background-color: green;
+}
+
+
+.deleteItem {
+  display: flex;
+  flex-shrink: 0;
+  align-self: center;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.deleteItem::before,
+.deleteItem::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 2px;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+}
+
+.deleteItem::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.deleteItem::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.deleteItem:hover::before,
+.deleteItem:hover::after {
+  background-color: red;
 }
 
 #blackbox::-webkit-scrollbar {
@@ -79,7 +169,6 @@ body {
 #blackbox li {
   margin-bottom: 10px;
   border-bottom: 1px solid white;
-  padding: 5px;
+  padding: 5px 5px 20px 0;
   max-height: 300px;
-  padding: 20px;
 }
