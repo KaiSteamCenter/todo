@@ -28,7 +28,8 @@ header {
 
 
 body {
-    background-color:antiquewhite;
+  text-align: center;
+   background-color:antiquewhite;
 }
 #welcome {
     text-align: center;
@@ -55,23 +56,40 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; /* Add a lower value */
+  z-index: 1;
 }
 
 #blackbox {
   background-color: black;
   color: white;
   width: 600px;
-  height: 300px; /* Changed from max-height to height */
+  height: 300px;
   border-radius: 5px;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  position: absolute;
-  top: 25%; /* Added top property */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   word-wrap: break-word;
+  margin: 0 auto;
 }
+
+#blackbox ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+}
+
+#blackbox li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid white;
+  padding: 10px 5px 20px 0;
+  max-height: 300px;
+}
+
+#blackbox::-webkit-scrollbar {
+  display: none;
+}
+
 
 .flex-container {
   display: flex;
@@ -155,20 +173,38 @@ body {
   background-color: red;
 }
 
-#blackbox::-webkit-scrollbar {
-  display: none;
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#blackbox ul {
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button.active {
+  background-color: #2196F3;
+  color: #fff;
+  border-color: #2196F3;
+}
+
+#blackbox li.button,
+#blackbox li#buttonThing {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  max-height: 300px;
-}
-
-#blackbox li {
   margin-bottom: 10px;
-  border-bottom: 1px solid white;
-  padding: 5px 5px 20px 0;
+  padding: 10px 5px 20px 0;
   max-height: 300px;
+  border-bottom: none;
 }
