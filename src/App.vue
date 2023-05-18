@@ -18,6 +18,11 @@ function deleteTodo(index) {
 watch(todos, function(value) {
   window.localStorage.setItem('todos', JSON.stringify(value))}, {deep: true})
 
+function activeFilter(todo) {
+  return todo.complete == false
+}
+
+
 function todoFilter(todo) {
   if (filter.value === 'active') {
     return todo.complete === false;
@@ -27,6 +32,7 @@ function todoFilter(todo) {
   return true;
 }
 
+
 </script>
 
 <template>
@@ -35,18 +41,21 @@ function todoFilter(todo) {
 
 <div id="blackbox">
   <ul>
+    <li id="buttonThing" v-if="todos.length > 0">
+      <p> {{ todos.filter(activeFilter).length }} items left</p>
+      <button class="button" :class="{ 'active': filter === 'all' }" @click="filter = 'all'">All</button>
+     <button class="button" :class="{ 'active': filter === 'active' }" @click="filter = 'active'">Active</button>
+     <button class="button" :class="{ 'active': filter === 'completed' }" @click="filter = 'completed'">Completed</button>
+   </li> l
     <li v-for="(todo, index) in todos.filter(todoFilter)" :class="{completed: todo.complete}" class="flex-container">
       <input class="checkboxItem" type="checkbox" checked="checked" v-model="todo.complete"> 
     {{ todo.text }}
-    <button @click="$event => deleteTodo(index)" class="deleteItem">X</button>
+    <button @click="$event => deleteTodo(index)" class="deleteItem"></button>
 
     </li>
+
   </ul>
-  <li id="buttonThing">
-  <button class="button" :class="{ 'active': filter === 'all' }" @click="filter = 'all'">All</button>
-  <button class="button" :class="{ 'active': filter === 'active' }" @click="filter = 'active'">Active</button>
-  <button class="button" :class="{ 'active': filter === 'completed' }" @click="filter = 'completed'">Completed</button>
-  </li> 
+
 
 </div>
 
