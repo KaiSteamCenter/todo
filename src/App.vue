@@ -41,12 +41,12 @@ function todoFilter(todo) {
 
 <div id="blackbox">
   <ul>
-    <li id="buttonThing" v-if="todos.length > 0">
-      <p> {{ todos.filter(activeFilter).length }} items left</p>
+    <li class="buttonThing" v-if="todos.length > 0">
+      <p>{{ todos.filter(activeFilter).length }} items left</p>
       <button class="button" :class="{ 'active': filter === 'all' }" @click="filter = 'all'">All</button>
      <button class="button" :class="{ 'active': filter === 'active' }" @click="filter = 'active'">Active</button>
      <button class="button" :class="{ 'active': filter === 'completed' }" @click="filter = 'completed'">Completed</button>
-   </li> l
+   </li>
     <li v-for="(todo, index) in todos.filter(todoFilter)" :class="{completed: todo.complete}" class="flex-container">
       <input class="checkboxItem" type="checkbox" checked="checked" v-model="todo.complete"> 
     {{ todo.text }}
@@ -59,8 +59,7 @@ function todoFilter(todo) {
 
 </div>
 
-<input v-model="newTodo" @keydown.enter="todoButton" id="todoInput">
-<button @click="todoButton" id="todoSubmit">Add Todo</button>
+<input v-model="newTodo" @keydown.enter="todoButton" id="todoInput" placeholder="Write your todo" class="center-placeholder">
 
 
 

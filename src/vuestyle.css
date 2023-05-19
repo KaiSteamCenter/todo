@@ -27,37 +27,44 @@ header {
 
 
 
-body {
-  text-align: center;
-   background-color:antiquewhite;
-}
-#welcome {
+  body {
     text-align: center;
-}
-#todoSubmit {
-  margin: 5px 3px 10px 5px;
-  padding: 5px 10px;
-  border-radius: 7px;
-  align-items: center;
-  position: absolute;
-  top: 54%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 17.5px;
-  z-index: 2; /* Add a higher value */
-}
-
-#todoInput {
-  margin: 5px 3px 10px 5px;
-  padding: 5px 10px;
-  border-radius: 7px;
-  position: absolute;
-  font-size: 17.5px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
+    background-color: antiquewhite;
+  }
+  
+  #welcome {
+    text-align: center;
+  }
+  
+  #todoSubmit {
+    margin: 10px 5px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 17.5px;
+    z-index: 2;
+  }
+  
+  #todoInput {
+    margin: 10px 5px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    position: absolute;
+    font-size: 17.5px;
+    top: calc(50% - 25px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .center-placeholder::placeholder {
+    text-align: center;
+    color: #B8E2F2;
+    font-weight: 500;
+  }
+  
 
 #blackbox {
   background-color: #f9f9f9;
@@ -87,9 +94,8 @@ body {
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s ease;
 }
 
@@ -243,6 +249,12 @@ body {
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.buttonThing {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .button.active {
