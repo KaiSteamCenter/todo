@@ -60,6 +60,7 @@ function todoFilter(todo) {
 </div>
 
 <input v-model="newTodo" @keydown.enter="todoButton" id="todoInput" placeholder="Write your todo" class="center-placeholder">
+<!--   <button @click="todoButton" id="todoSubmit">Add Todo</button>  , add this for the todoSubmit Button -->
 
 
 
